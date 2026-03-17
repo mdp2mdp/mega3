@@ -462,7 +462,7 @@ export default function Home() {
               <h3 className="font-bold mb-4">Контакты</h3>
               <p>+7 926 601-06-60</p>
               <p>info@mgservis.ru</p>
-              <p className="mt-2 text-sm text-gray-300">Москва, ул. Профсоюзная, д. 42</p>
+              <p className="mt-2 text-sm text-gray-300">г. Мытищи, ул. Кадомцева, д.2</p>
             </div>
             <div>
               <h3 className="font-bold mb-4">Навигация</h3>
@@ -478,9 +478,9 @@ export default function Home() {
             </div>
             <div>
               <h3 className="font-bold mb-4">Реквизиты</h3>
-              <p>ООО "Мега-Сервис-Групп"</p>
-              <p>ИНН: 7701234567</p>
-              <p>ОГРН: 1177746123456</p>
+              <p>ООО "Мега-Сервис"</p>
+              <p>ИНН: 5029053808</p>
+              <p>ОГРН: 1035005502663</p>
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
