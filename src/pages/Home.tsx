@@ -1,16 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, Phone, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { APP_LOGO } from '@/const';
 // import { ServiceIcon } from '@/components/ServiceIcons';
 // import { TelegramIcon, WhatsAppIcon, MessengerLink } from '@/components/MessengerIcons';
 // import { ContactForm } from '@/components/ContactForm';
 import { SimpleContactForm } from '../components/SimpleContactForm';
+import Projects from '../components/Projects';
+import Hero from '../components/Hero';
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [projectCarousels, setProjectCarousels] = useState<{[key: number]: number}>({});
   const servicesRef = useRef<HTMLDivElement | null>(null);
   const aboutRef = useRef<HTMLDivElement | null>(null);
   const advantagesRef = useRef<HTMLDivElement | null>(null);
@@ -78,7 +79,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-transparent">
       {/* Header */}
       <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -109,6 +110,9 @@ export default function Home() {
             </a>
             <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/telegram-icon.png" alt="Telegram" className="h-6 w-auto" />
+            </a>
+            <a href="https://max.ru/u/f9LHodD0cOIhZcRXW9VFkiSla5sHUI4LrlvepURUaCJWE1Hfm2v8NRE2wrU" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <img src="/max-icon.png" alt="Max" className="h-6 w-auto" />
             </a>
 
             <button
@@ -146,8 +150,15 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="flex gap-3 pt-4 border-t">
-                  {/* <MessengerLink href="https://t.me/p757bp" icon="telegram" label="Telegram" />
-                  <MessengerLink href="https://wa.me/79261692970?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BD%D0%B5%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D0%BD%D1%8B%20%D0%B2%D0%B0%D1%88%D0%B8%20%D1%83%D1%81%D0%BB%D1%83%D0%B3%D0%B8." icon="whatsapp" label="WhatsApp" /> */}
+                  <a href="https://wa.me/79266010660" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-8 w-auto" />
+                  </a>
+                  <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <img src="/telegram-icon.png" alt="Telegram" className="h-8 w-auto" />
+                  </a>
+                  <a href="https://max.ru/u/f9LHodD0cOIhZcRXW9VFkiSla5sHUI4LrlvepURUaCJWE1Hfm2v8NRE2wrU" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <img src="/max-icon.png" alt="Max" className="h-8 w-auto" />
+                  </a>
                 </div>
               </div>
             </nav>
@@ -156,33 +167,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section - Redesigned with equipment focus */}
-      <section className="relative pt-24 pb-20 min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0f5a6b]/80 to-[#0f5a6b]/60"></div>
-        <div className="absolute inset-0 bg-[url('/hero-equipment.jpg')] bg-cover bg-center"></div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-            Комплексное оснащение учреждений
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-100">
-            От анализа технического задания до поставки, монтажа и ввода оборудования в эксплуатацию
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => scrollToSection(contactRef)}
-              className="bg-white text-[#0f5a6b] px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors font-bold text-lg"
-            >
-              Оставить заявку
-            </button>
-            <button
-              onClick={() => scrollToSection(projectsRef)}
-              className="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-[#0f5a6b] transition-colors font-bold text-lg"
-            >
-              Посмотреть проекты
-            </button>
-          </div>
-        </div>
-      </section>
+      <Hero 
+        onContactClick={() => scrollToSection(contactRef)} 
+        onProjectsClick={() => scrollToSection(projectsRef)} 
+      />
 
       {/* About Section */}
       <section ref={aboutRef} className="py-20 bg-gradient-to-b from-gray-50 to-white">
@@ -328,92 +316,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section ref={projectsRef} className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Реализованные проекты</h2>
-            <div className="w-20 h-1 bg-[#0f5a6b] mx-auto"></div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              { 
-                title: 'Фельдшерско-акушерский пункт', 
-                images: ['/project-clinic-feldsher.jpg', '/project-clinic-before.jpg', '/project-hospital-lab.jpg', '/project-education-center.jpg', '/project-admin-office.jpg'],
-                duration: '3 месяца',
-                budget: 'Оптимизированный бюджет',
-                description: 'Комплексное оснащение медицинского учреждения'
-              },
-              { 
-                title: 'Лаборатория медицинского анализа', 
-                images: ['/project-hospital-lab.jpg', '/project-clinic-feldsher.jpg', '/project-clinic-before.jpg', '/project-education-center.jpg', '/project-admin-office.jpg'],
-                duration: '2 месяца',
-                budget: 'Оптимизированный бюджет',
-                description: 'Монтаж специализированного оборудования'
-              },
-              { 
-                title: 'Образовательный центр', 
-                images: ['/project-education-center.jpg', '/project-clinic-feldsher.jpg', '/project-clinic-before.jpg', '/project-hospital-lab.jpg', '/project-admin-office.jpg'],
-                duration: '4 месяца',
-                budget: 'Оптимизированный бюджет',
-                description: 'Оснащение учебных кабинетов'
-              },
-              { 
-                title: 'Офис ит-компании', 
-                images: ['/project-admin-office.jpg', '/project-clinic-feldsher.jpg', '/project-clinic-before.jpg', '/project-hospital-lab.jpg', '/project-education-center.jpg'],
-                duration: '2 недели',
-                budget: 'Оптимизированный бюджет',
-                description: 'Модернизация рабочих площадей'
-              },
-            ].map((proj, i) => {
-              const currentImageIndex = projectCarousels[i] || 0;
-              const currentImage = proj.images[currentImageIndex];
-              return (
-                <div key={i} className="bg-gray-50 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="relative h-48 bg-gray-200 overflow-hidden group">
-                    <img src={currentImage} alt={proj.title} className="w-full h-full object-cover" />
-                    {proj.images.length > 1 && (
-                      <>
-                        <button
-                          onClick={() => setProjectCarousels({...projectCarousels, [i]: (currentImageIndex - 1 + proj.images.length) % proj.images.length})}
-                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          <ChevronLeft size={20} />
-                        </button>
-                        <button
-                          onClick={() => setProjectCarousels({...projectCarousels, [i]: (currentImageIndex + 1) % proj.images.length})}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
-                          <ChevronRight size={20} />
-                        </button>
-                        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
-                          {proj.images.map((_, idx) => (
-                            <div key={idx} className={`h-2 w-2 rounded-full ${idx === currentImageIndex ? 'bg-white' : 'bg-white/50'}`}></div>
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">{proj.title}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{proj.description}</p>
-                    <div className="space-y-2 border-t pt-4">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-600"><strong>Срок:</strong></span>
-                        <span className="text-[#0f5a6b] font-semibold">{proj.duration}</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-gray-600"><strong>Бюджет:</strong></span>
-                        <span className="text-[#0f5a6b] font-semibold">{proj.budget}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+            {/* Projects Section */}
+      <div ref={projectsRef}>
+        <Projects />
+      </div>
+
+
 
 
 
@@ -461,6 +369,17 @@ export default function Home() {
             <div>
               <h3 className="font-bold mb-4">Контакты</h3>
               <p>+7 926 601-06-60</p>
+              <div className="flex items-center gap-3 my-3">
+                <a href="https://wa.me/79266010660" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                  <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-6 w-6 object-contain" />
+                </a>
+                <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                  <img src="/telegram-icon.png" alt="Telegram" className="h-6 w-6 object-contain" />
+                </a>
+                <a href="https://max.ru/u/f9LHodD0cOIhZcRXW9VFkiSla5sHUI4LrlvepURUaCJWE1Hfm2v8NRE2wrU" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                  <img src="/max-icon.png" alt="Max" className="h-6 w-6 object-contain" />
+                </a>
+              </div>
               <p>info@mgservis.ru</p>
               <p className="mt-2 text-sm text-gray-300">г. Мытищи, ул. Кадомцева, д.2</p>
             </div>
