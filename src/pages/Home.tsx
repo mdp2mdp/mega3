@@ -403,7 +403,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="font-bold mb-4">Контакты</h3>
-              <p>+7 926 601-06-60</p>
+              <p>+7 906 763-87-13</p>
               <div className="flex items-center gap-3 my-3">
                 <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
                   <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-6 w-6 object-contain" />
