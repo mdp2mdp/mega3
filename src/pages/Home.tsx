@@ -8,6 +8,29 @@ import { SimpleContactForm } from '../components/SimpleContactForm';
 import Projects from '../components/Projects';
 import Hero from '../components/Hero';
 
+const FadeInSection = ({ children }: { children: React.ReactNode }) => {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setVisible(true);
+        if (domRef.current) observer.unobserve(domRef.current);
+      }
+    }, { rootMargin: '0px 0px -100px 0px' }); // Анимация начнется, когда блок появится на 100px снизу экрана
+
+    if (domRef.current) observer.observe(domRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={domRef} className={`transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      {children}
+    </div>
+  );
+};
+
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +104,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-transparent">
       {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md' : 'bg-white'}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md ${scrolled ? 'shadow-md' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img src={APP_LOGO} alt="Logo" className="h-10" />
@@ -100,18 +123,18 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2 md:gap-3">
-            <a href="tel:+79266010660" className="flex items-center gap-1 md:gap-2 text-gray-700 hover:text-[#0f5a6b] transition-colors">
+            <a href="tel:+79067638713" className="flex items-center gap-1 md:gap-2 text-gray-700 hover:text-[#0f5a6b] transition-colors">
               <Phone size={16} />
-              <span className="hidden md:inline text-sm font-medium">+7 926 601-06-60</span>
+              <span className="hidden md:inline text-sm font-medium">+7 906 763-87-13</span>
             </a>
             
-            <a href="https://wa.me/79266010660" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-6 w-auto" />
             </a>
-            <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://t.me/aalshaev" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/telegram-icon.png" alt="Telegram" className="h-6 w-auto" />
             </a>
-            <a href="https://max.ru/u/f9LHodD0cOIhZcRXW9VFkiSla5sHUI4LrlvepURUaCJWE1Hfm2v8NRE2wrU" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <a href="https://max.ru/u/f9LHodD0cOKkmpgTwPABOhg13nxWWgrZOet9fRtHV29i5kZz-l1-MZ-0N6s" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
               <img src="/max-icon.png" alt="Max" className="h-6 w-auto" />
             </a>
 
@@ -128,7 +151,7 @@ export default function Home() {
         {mobileMenuOpen && (
           <div className="fixed inset-0 z-40 md:hidden">
             <div className="absolute inset-0 bg-black/30" onClick={() => setMobileMenuOpen(false)}></div>
-            <nav className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg animate-in slide-in-from-right-full duration-300">
+            <nav className="absolute right-0 top-0 h-full w-64 bg-white/95 backdrop-blur-lg shadow-lg animate-in slide-in-from-right-full duration-300">
               <div className="p-6 space-y-4">
                 <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4">
                   <X size={24} className="text-gray-700" />
@@ -145,18 +168,18 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="border-t pt-4 mt-4">
-                  <a href="tel:+79261692970" className="block text-gray-700 hover:text-[#0f5a6b] py-2 font-medium">
-                    +7 926 169-29-70
+                  <a href="tel:+79067638713" className="block text-gray-700 hover:text-[#0f5a6b] py-2 font-medium">
+                    +7 906 763-87-13
                   </a>
                 </div>
                 <div className="flex gap-3 pt-4 border-t">
-                  <a href="https://wa.me/79266010660" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                     <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-8 w-auto" />
                   </a>
-                  <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <a href="https://t.me/aalshaev" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                     <img src="/telegram-icon.png" alt="Telegram" className="h-8 w-auto" />
                   </a>
-                  <a href="https://max.ru/u/f9LHodD0cOIhZcRXW9VFkiSla5sHUI4LrlvepURUaCJWE1Hfm2v8NRE2wrU" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <a href="https://max.ru/u/f9LHodD0cOKkmpgTwPABOhg13nxWWgrZOet9fRtHV29i5kZz-l1-MZ-0N6s" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                     <img src="/max-icon.png" alt="Max" className="h-8 w-auto" />
                   </a>
                 </div>
@@ -174,7 +197,8 @@ export default function Home() {
 
       {/* About Section */}
       <section ref={aboutRef} className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4">
+        <FadeInSection>
+          <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">О компании</h2>
             <div className="w-20 h-1 bg-[#0f5a6b] mx-auto"></div>
@@ -221,10 +245,12 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </FadeInSection>
       </section>
 
       {/* Values Section */}
       <section className="py-20 bg-gray-50 border-t-8 border-[#0f5a6b]">
+        <FadeInSection>
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Наши ценности</h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -253,12 +279,14 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+          </div>
+        </FadeInSection>
       </section>
 
       {/* Statistics Section */}
       <section className="py-20 bg-[#0f5a6b] border-t-8 border-[#0f5a6b]">
-        <div className="max-w-7xl mx-auto px-4">
+        <FadeInSection>
+          <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-white mb-12 text-center">Наши достижения</h2>
           <div className="grid md:grid-cols-4 gap-8">
             <Counter target={2020} label="год основания" suffix="" />
@@ -266,12 +294,14 @@ export default function Home() {
             <Counter target={40} label="областей РФ, где работает наша команда" suffix="+" />
             <Counter target={100} label="проектов сданы в строго оговоренные сроки" suffix="%" />
           </div>
-        </div>
+          </div>
+        </FadeInSection>
       </section>
 
       {/* Services Section */}
       <section ref={servicesRef} className="py-20 bg-gray-50 border-t-8 border-[#0f5a6b]">
-        <div className="max-w-7xl mx-auto px-4">
+        <FadeInSection>
+          <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Наши услуги</h2>
           <div className="grid md:grid-cols-5 gap-6">
             {[
@@ -290,12 +320,14 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
+          </div>
+        </FadeInSection>
       </section>
 
       {/* Advantages Section */}
       <section ref={advantagesRef} className="py-20 bg-white border-t-8 border-[#0f5a6b]">
-        <div className="max-w-7xl mx-auto px-4">
+        <FadeInSection>
+          <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Почему выбирают МЕГА-СЕРВИС?</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
@@ -313,21 +345,21 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
+          </div>
+        </FadeInSection>
       </section>
 
             {/* Projects Section */}
       <div ref={projectsRef}>
-        <Projects />
+        <FadeInSection>
+          <Projects />
+        </FadeInSection>
       </div>
-
-
-
-
 
       {/* FAQ Section */}
       <section ref={faqRef} className="py-20 bg-gray-50 border-t-8 border-[#0f5a6b]">
-        <div className="max-w-3xl mx-auto px-4">
+        <FadeInSection>
+          <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Часто задаваемые вопросы</h2>
           <div className="space-y-4">
             {[
@@ -352,14 +384,17 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
+          </div>
+        </FadeInSection>
       </section>
 
       {/* Contact Section */}
       <section ref={contactRef} className="py-20 bg-white border-t-8 border-[#0f5a6b]">
-        <div className="max-w-2xl mx-auto px-4">
+        <FadeInSection>
+          <div className="max-w-2xl mx-auto px-4">
           <SimpleContactForm />
-        </div>
+          </div>
+        </FadeInSection>
       </section>
 
       {/* Footer */}
@@ -370,7 +405,7 @@ export default function Home() {
               <h3 className="font-bold mb-4">Контакты</h3>
               <p>+7 926 601-06-60</p>
               <div className="flex items-center gap-3 my-3">
-                <a href="https://wa.me/79266010660" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
                   <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-6 w-6 object-contain" />
                 </a>
                 <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
@@ -403,7 +438,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
-            <p>&copy; 2024 Мега-Сервис-Групп. Все права защищены.</p>
+            <p>&copy; 2026 Мега-Сервис-Групп. Все права защищены.</p>
           </div>
         </div>
       </footer>
