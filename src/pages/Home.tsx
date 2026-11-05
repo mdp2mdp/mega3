@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, ClipboardCheck, Truck, Wrench, SlidersHorizontal, ShieldCheck } from 'lucide-react';
 import { APP_LOGO } from '@/const';
 // import { ServiceIcon } from '@/components/ServiceIcons';
 // import { TelegramIcon, WhatsAppIcon, MessengerLink } from '@/components/MessengerIcons';
@@ -305,15 +305,15 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Наши услуги</h2>
           <div className="grid md:grid-cols-5 gap-6">
             {[
-              { title: 'Экспертиза проектной документации', desc: 'Детальный анализ технического задания и оптимизация решений', icon: 'expertise' as const },
-              { title: 'Поставка оборудования', desc: 'Работа с надежными производителями и поставщиками', icon: 'supply' as const },
-              { title: 'Монтаж и установка', desc: 'Профессиональный монтаж с соблюдением всех норм', icon: 'installation' as const },
-              { title: 'Пусконаладка', desc: 'Полная настройка и тестирование оборудования', icon: 'commissioning' as const },
-              { title: 'Техническое обслуживание', desc: 'Постоянная поддержка и обслуживание систем', icon: 'maintenance' as const },
+              { title: 'Экспертиза проектной документации', desc: 'Детальный анализ технического задания и оптимизация решений', Icon: ClipboardCheck },
+              { title: 'Поставка оборудования', desc: 'Работа с надежными производителями и поставщиками', Icon: Truck },
+              { title: 'Монтаж и установка', desc: 'Профессиональный монтаж с соблюдением всех норм', Icon: Wrench },
+              { title: 'Пусконаладка', desc: 'Полная настройка и тестирование оборудования', Icon: SlidersHorizontal },
+              { title: 'Техническое обслуживание', desc: 'Постоянная поддержка и обслуживание систем', Icon: ShieldCheck },
             ].map((service, i) => (
               <div key={i} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                 <div className="mb-4 flex justify-center">
-                  {/* <ServiceIcon type={service.icon} /> */}
+                  <div className="w-14 h-14 rounded-xl bg-[#0f5a6b]/10 text-[#0f5a6b] flex items-center justify-center"><service.Icon size={28} strokeWidth={1.75} /></div>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
                 <p className="text-gray-600 text-sm">{service.desc}</p>
@@ -408,10 +408,10 @@ export default function Home() {
                 <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
                   <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-6 w-6 object-contain" />
                 </a>
-                <a href="https://t.me/P757BP" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                <a href="https://t.me/aalshaev" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
                   <img src="/telegram-icon.png" alt="Telegram" className="h-6 w-6 object-contain" />
                 </a>
-                <a href="https://max.ru/u/f9LHodD0cOIhZcRXW9VFkiSla5sHUI4LrlvepURUaCJWE1Hfm2v8NRE2wrU" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
+                <a href="https://max.ru/u/f9LHodD0cOKkmpgTwPABOhg13nxWWgrZOet9fRtHV29i5kZz-l1-MZ-0N6s" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-all bg-white/10 hover:bg-white/20 p-2 rounded-full">
                   <img src="/max-icon.png" alt="Max" className="h-6 w-6 object-contain" />
                 </a>
               </div>
