@@ -147,47 +147,48 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Menu - Slide from right */}
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 z-40 md:hidden">
-            <div className="absolute inset-0 bg-black/30" onClick={() => setMobileMenuOpen(false)}></div>
-            <nav className="absolute right-0 top-0 h-full w-64 bg-white/95 backdrop-blur-lg shadow-lg animate-in slide-in-from-right-full duration-300">
-              <div className="p-6 space-y-4">
-                <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4">
-                  <X size={24} className="text-gray-700" />
-                </button>
-                <div className="mt-8 space-y-3">
-                  {menuItems.map((item) => (
-                    <button
-                      key={item.label}
-                      onClick={() => scrollToSection(item.ref)}
-                      className="block w-full text-left text-gray-700 hover:text-[#0f5a6b] py-2 font-medium"
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </div>
-                <div className="border-t pt-4 mt-4">
-                  <a href="tel:+79067638713" className="block text-gray-700 hover:text-[#0f5a6b] py-2 font-medium">
-                    +7 906 763-87-13
-                  </a>
-                </div>
-                <div className="flex gap-3 pt-4 border-t">
-                  <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                    <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-8 w-auto" />
-                  </a>
-                  <a href="https://t.me/aalshaev" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                    <img src="/telegram-icon.png" alt="Telegram" className="h-8 w-auto" />
-                  </a>
-                  <a href="https://max.ru/u/f9LHodD0cOKkmpgTwPABOhg13nxWWgrZOet9fRtHV29i5kZz-l1-MZ-0N6s" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                    <img src="/max-icon.png" alt="Max" className="h-8 w-auto" />
-                  </a>
-                </div>
-              </div>
-            </nav>
-          </div>
-        )}
       </header>
+
+      {/* Mobile Menu - Slide from right */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] md:hidden">
+          <div className="absolute inset-0 bg-black/30" onClick={() => setMobileMenuOpen(false)}></div>
+          <nav className="absolute right-0 top-0 h-full w-64 bg-white shadow-lg animate-in slide-in-from-right-full duration-300">
+            <div className="p-6 space-y-4">
+              <button onClick={() => setMobileMenuOpen(false)} className="absolute top-4 right-4">
+                <X size={24} className="text-gray-700" />
+              </button>
+              <div className="mt-8 space-y-3">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => scrollToSection(item.ref)}
+                    className="block w-full text-left text-gray-700 hover:text-[#0f5a6b] py-2 font-medium"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              <div className="border-t pt-4 mt-4">
+                <a href="tel:+79067638713" className="block text-gray-700 hover:text-[#0f5a6b] py-2 font-medium">
+                  +7 906 763-87-13
+                </a>
+              </div>
+              <div className="flex gap-3 pt-4 border-t">
+                <a href="https://wa.me/79067638713" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <img src="/whatsapp-icon.png" alt="WhatsApp" className="h-8 w-auto" />
+                </a>
+                <a href="https://t.me/aalshaev" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <img src="/telegram-icon.png" alt="Telegram" className="h-8 w-auto" />
+                </a>
+                <a href="https://max.ru/u/f9LHodD0cOKkmpgTwPABOhg13nxWWgrZOet9fRtHV29i5kZz-l1-MZ-0N6s" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <img src="/max-icon.png" alt="Max" className="h-8 w-auto" />
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      )}
 
       {/* Hero Section - Redesigned with equipment focus */}
       <Hero 
