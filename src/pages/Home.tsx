@@ -104,10 +104,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-transparent">
       {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md ${scrolled ? 'shadow-md' : ''}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <img src={APP_LOGO} alt="Logo" className="h-10" />
+            <img src={APP_LOGO} alt="Logo" className={`h-10 transition-[filter] duration-300 ${scrolled ? '' : 'brightness-0 invert'}`} />
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -115,7 +115,7 @@ export default function Home() {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.ref)}
-                className="text-gray-700 hover:text-[#0f5a6b] transition-colors text-sm font-medium"
+                className={`transition-colors text-sm font-medium ${scrolled ? 'text-gray-700 hover:text-[#0f5a6b]' : 'text-white/90 hover:text-white'}`}
               >
                 {item.label}
               </button>
@@ -123,7 +123,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2 md:gap-3">
-            <a href="tel:+79067638713" className="flex items-center gap-1 md:gap-2 text-gray-700 hover:text-[#0f5a6b] transition-colors">
+            <a href="tel:+79067638713" className={`flex items-center gap-1 md:gap-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#0f5a6b]' : 'text-white hover:text-white/80'}`}>
               <Phone size={16} />
               <span className="hidden md:inline text-sm font-medium">+7 906 763-87-13</span>
             </a>
@@ -140,7 +140,8 @@ export default function Home() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-700 hover:text-[#0f5a6b]"
+              aria-label="Меню"
+              className={`md:hidden transition-colors ${scrolled ? 'text-gray-700 hover:text-[#0f5a6b]' : 'text-white'}`}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
