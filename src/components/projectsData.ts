@@ -98,7 +98,7 @@ export const projectsData: Project[] = [
       "Колясочная и пункт охраны."
     ],
     videoUrl: null,
-    images: []
+    images: ["/povarovo-1.jpg", "/povarovo-2.jpg", "/povarovo-3.jpg", "/povarovo-4.jpg", "/povarovo-5.jpg", "/povarovo-6.jpg", "/povarovo-7.jpg"]
   },
   {
     id: 5,
@@ -118,6 +118,6 @@ export const projectsData: Project[] = [
       "Территория: игровые площадки с теневыми навесами, физкультурно-спортивная и хозяйственно-бытовая зоны."
     ],
     videoUrl: null,
-    images: []
+    images: ["/zubachevo-1.jpg", "/zubachevo-2.jpg", "/zubachevo-3.jpg", "/zubachevo-4.jpg", "/zubachevo-5.jpg", "/zubachevo-6.jpg", "/zubachevo-7.jpg"]
   }
 ];
